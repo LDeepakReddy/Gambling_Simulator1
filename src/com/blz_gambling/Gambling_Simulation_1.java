@@ -6,6 +6,7 @@ public class Gambling_Simulation_1 {
     public static final int EXIT_MARGIN = (DAY_STARTING_MONEY / 100) * 50;
     public static final int WINNING_MARGIN = DAY_STARTING_MONEY + EXIT_MARGIN;
     public static final int LOOSING_MARGIN = DAY_STARTING_MONEY - EXIT_MARGIN;
+    public static final int MONTH_DAYS = 30;
 
 
     public static void main(String[] args) {
@@ -17,9 +18,9 @@ public class Gambling_Simulation_1 {
         int sumAmount = 0;
         int totalCash = DAY_STARTING_MONEY;
         int bet = BET_PER_EVERYGAME;
-        for (Day = 1; Day <= 20; Day++) {
+        for (Day = 1; Day <= MONTH_DAYS; Day++) {
             while (totalCash < WINNING_MARGIN && totalCash > LOOSING_MARGIN) {
-                int game = (int) ((Math.random() * 10) % 2); //to check the player is win or lost
+                int game = (int) ((Math.random() * 10) % 2);
                 if (game == 1) {
                     totalCash += bet;
                     wonCount++;
@@ -27,7 +28,6 @@ public class Gambling_Simulation_1 {
                     totalCash -= bet;
                     lossCount++;
                 }
-                count++;
             }
             if (totalCash == WINNING_MARGIN) {
                 sumAmount += 50;
@@ -38,9 +38,9 @@ public class Gambling_Simulation_1 {
             }
         }
         if (sumAmount > 0) {
-            System.out.println("gambler won by " + sumAmount);
+            System.out.println("Player won by " + sumAmount);
         } else {
-            System.out.println("gambler loss by " + sumAmount);
+            System.out.println("Player loss by " + sumAmount);
         }
     }
 }
